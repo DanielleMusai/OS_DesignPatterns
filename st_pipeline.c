@@ -9,7 +9,7 @@
 #include "st_pipeline.h"
 
 
-activeObject *AO1, *AO2, *AO3, *AO4;
+activeObject *ao1, *ao2, *ao3, *ao4;
 
 void *func1(void *argument)
 {
@@ -34,7 +34,7 @@ void *func1(void *argument)
         exit(EXIT_FAILURE);
     }
     *number_copy = number;
-    enqueue(getQueue(AO2), number_copy);
+    enqueue(getQueue(ao2), number_copy);
 
     return NULL;
 }
@@ -56,7 +56,7 @@ void *func2(void *argument)
         printf("false\n");
     }
 
-    enqueue(getQueue(AO3), number);
+    enqueue(getQueue(ao3), number);
 
     return NULL;
 }
@@ -78,7 +78,7 @@ void *func3(void *argument)
         printf("false\n");
     }
 
-    enqueue(getQueue(AO4), number);
+    enqueue(getQueue(ao4), number);
 
     return NULL;
 }
@@ -124,16 +124,16 @@ int main(int argc, char *argv[])
 
     srand(seed);
 
-    AO1 = createActiveObject(func1);
-    AO2 = createActiveObject(func2);
-    AO3 = createActiveObject(func3);
-    AO4 = createActiveObject(func4);
+    ao1 = createActiveObject(func1);
+    ao2 = createActiveObject(func2);
+    ao3 = createActiveObject(func3);
+    ao4 = createActiveObject(func4);
 
     for (int i = 0; i < iterations; i++)
     {
         unsigned int *num = malloc(sizeof(unsigned int));
         *num = rand() % 900000 + 100000;
-        enqueue(getQueue(AO1), num);
+        enqueue(getQueue(ao1), num);
         printf("\n");
 
         if (i < iterations - 1)
@@ -142,10 +142,10 @@ int main(int argc, char *argv[])
         }
     }
 
-    stop(AO1);
-    stop(AO2);
-    stop(AO3);
-    stop(AO4);
+    stop(ao1);
+    stop(ao2);
+    stop(ao3);
+    stop(ao4);
 
     return 0;
 }

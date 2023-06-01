@@ -23,7 +23,7 @@ activeObject *createActiveObject(void *(*func)(void *))
     }
     obj->queue = createQueue();
     obj->func = func;
-    pthread_create(&(obj->pthr), NULL, start, obj);
+    pthread_create(&(obj->pthr), NULL, activeObjectThread, obj);
     return obj;
 }
 

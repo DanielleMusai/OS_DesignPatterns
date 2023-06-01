@@ -62,10 +62,10 @@ void *dequeue(queue *que)
     free(head);
     return item;
 }
-
 void freeQueue(queue *queue)
 {
     pthread_mutex_lock(&(queue->mutex));
+
     node *current = queue->head;
     while (current != NULL)
     {
@@ -73,11 +73,15 @@ void freeQueue(queue *queue)
         current = current->next;
         free(to_free);
     }
+
+    queue->head = NULL;
+    queue->tail = NULL;
     pthread_mutex_unlock(&(queue->mutex));
     pthread_mutex_destroy(&(queue->mutex));
     pthread_cond_destroy(&(queue->cond));
     free(queue);
 }
+
 
 node *createNode(void *item)
 {

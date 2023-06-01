@@ -12,28 +12,28 @@ The activeObject structure and its associated functions implement the concept of
 ## Part D - st_pipeline 
 This repository contains a program called st_pipeline that demonstrates the usage of the functions provided in the previous sections. The program builds a pipeline consisting of four active objects (aos) to process a series of numbers and perform specific tasks on them.
 
-Pipeline Structure
-_______________
+### Pipeline Structure
 
-func1:
+
+*func1:
 
 Initializes the random number generator using the given seed.
 Generates N random numbers, each consisting of six digits (e.g., 3 + 3).
 Enqueues each number into the queue of the next active object (ao2) with a time difference of one thousandth of a second.
 
-func2:
+*func2:
 
 Receives numbers from ao1's queue.
 Prints each number, checks if it is prime, and prints "true" or "false" accordingly.
 Adds 11 to the number and enqueues it into ao3's queue.
 
-func3:
+*func3:
 
 Receives numbers from ao2's queue.
 Prints each number, checks if it is prime, and prints "true" or "false" accordingly.
 Subtracts 13 from the number and enqueues it into ao4's queue.
 
-func4:
+*func4:
 
 Receives numbers from ao3's queue.
 Prints each received number.

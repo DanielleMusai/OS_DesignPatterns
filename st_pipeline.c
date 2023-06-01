@@ -8,7 +8,6 @@
 #include <time.h>
 #include "st_pipeline.h"
 
-
 activeObject *ao1, *ao2, *ao3, *ao4;
 
 void *func1(void *argument)
@@ -30,7 +29,7 @@ void *func1(void *argument)
     unsigned int *number_copy = malloc(sizeof(unsigned int));
     if (number_copy == NULL)
     {
-        fprintf(stderr, "Allocate Memory failed.\n");
+        fprintf(stderr, "allocate Memory failed.\n");
         exit(EXIT_FAILURE);
     }
     *number_copy = number;
@@ -98,12 +97,6 @@ void *func4(void *argument)
 
 int main(int argc, char *argv[])
 {
-    if (argc > 2)
-    {
-        printf("too many arguments \n");
-        return 0;
-    }
-
     if (argc > 3 || argc < 2)
     {
         printf("Usage: %s <tasksNum> <seed>\n", argv[0]);
@@ -117,11 +110,10 @@ int main(int argc, char *argv[])
     {
         seed = atoi(argv[2]);
     }
-    else
+    if (!seed)
     {
         seed = time(0);
     }
-
     srand(seed);
 
     ao1 = createActiveObject(func1);
